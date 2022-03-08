@@ -31,7 +31,7 @@ const MovieList = () => {
       alignItems="center"
     >
       {movies?.map((item) => (
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} sm={4} key={item.id} style={{paddingTop: '10px'}}>
           <MovieCover
             key={item.id}
             item={item}

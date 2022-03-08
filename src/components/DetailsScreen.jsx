@@ -14,7 +14,7 @@ const DetailsScreen = () => {
         <p>More movies like this:</p>
         <Grid container spacing={2}>
         {movies?.map((item) => (
-        <Grid item xs={4} sm={3} md={1}  >
+        <Grid item xs={4} sm={3} md={1}  style={{paddingTop: '10px'}}>
           <MovieCover key={item.id} item={item} title={item.l} />
         </Grid>
       ))}

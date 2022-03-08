@@ -4,24 +4,22 @@ import axios from "axios";
 import { makeStyles } from "@mui/styles";
 import Header from "./Header";
 import { Grid } from "@mui/material";
-
+import image from "../images/image.png";
 
 const useStyles = makeStyles({
   div: {
     marginTop: "15px",
-    borderBottom: '1px solid red'
-  }
-})
-
+    borderBottom: "1px solid red",
+  },
+});
 
 const MovieDetails = () => {
-  const KEY = process.env.REACT_APP_API_KEY
-  const classes = useStyles()
+  const KEY = process.env.REACT_APP_API_KEY;
+  const classes = useStyles();
   const params = useParams();
 
   const [movieInfo, setMovieInfo] = useState(null);
-  console.log(movieInfo);
- 
+
   useEffect(() => {
     var options = {
       method: "GET",
@@ -32,6 +30,7 @@ const MovieDetails = () => {
         "x-rapidapi-key": KEY,
       },
     };
+
     axios
       .request(options)
       .then((res) => setMovieInfo(res.data))
@@ -45,16 +44,35 @@ const MovieDetails = () => {
     movieInfo && (
       <>
         <Header />
-        <Grid container >
+        <Grid container>
           <Grid item>
-            <img
-              src={movieInfo.title.image.url}
-              style={{ width: "400px", marginRight: "25px", maxHeight: '400px' }}
-            />
+            {movieInfo.title.image ? (
+              <img
+                src={movieInfo.title.image.url}
+                style={{
+                  width: "400px",
+                  marginRight: "25px",
+                  maxHeight: "400px",
+                }}
+              />
+            ) : (
+              <img
+                src={image}
+                style={{
+                  width: "400px",
+                  marginRight: "25px",
+                  maxHeight: "400px",
+                }}
+              />
+            )}
           </Grid>
-          <Grid >
-            <div className={classes.div}>Rating: {movieInfo.ratings.rating}</div>
-            <div className={classes.div}>Top Rank: {movieInfo.ratings.topRank}</div>
+          <Grid>
+            <div className={classes.div}>
+              Rating: {movieInfo.ratings.rating}
+            </div>
+            <div className={classes.div}>
+              Top Rank: {movieInfo.ratings.topRank}
+            </div>
             <div className={classes.div}>Genre: {movieInfo.genres[0]}</div>
             <div className={classes.div}>Released: {movieInfo.releaseDate}</div>
           </Grid>

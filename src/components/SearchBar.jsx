@@ -38,7 +38,7 @@ const SearchBar = (props ) => {
   const searchMovies = () => {
     navigate(`/?search=${props.text}`);
   };
-
+  
   useEffect(() => {
     const options = {
       method: "GET",
@@ -74,7 +74,7 @@ const SearchBar = (props ) => {
       </Button>
       <TextField
         className={classes.textField}
-        onChange={(e) => dispatch(searchMovie(e.target.value))}
+        onChange={(e) => dispatch(searchMovie((e.target.value)))}
       ></TextField>
     </div>
   );
