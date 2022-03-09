@@ -49,10 +49,7 @@ const SearchBar = (props ) => {
         "x-rapidapi-key": KEY,
       },
     };
-
-    console.log('search', searchQuery)
-
-    axios
+     axios
       .request(options)
       .then(function (response) {
         dispatch(moviesInfo(response.data.d));

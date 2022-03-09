@@ -38,7 +38,7 @@ const MovieDetails = () => {
 
     return () => setMovieInfo(null);
   }, [params.id]);
-  console.log("params", params.id);
+
 
   return (
     movieInfo && (
