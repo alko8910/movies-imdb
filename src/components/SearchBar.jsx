@@ -7,7 +7,8 @@ import { useDispatch } from "react-redux";
 import { searchMovie } from "../actions/searchActions";
 import { connect } from "react-redux";
 import { moviesInfo } from "../actions/moviesInfoAction";
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   button: {
@@ -26,30 +27,30 @@ const useStyles = makeStyles({
   },
 });
 
-const SearchBar = (props ) => {
-  const KEY = process.env.REACT_APP_API_KEY
+const SearchBar = (props) => {
+  const KEY = process.env.REACT_APP_API_KEY;
   const classes = useStyles();
   const navigate = useNavigate();
   const [params, setParams] = useSearchParams();
 
-  const searchQuery = params.get('search');
-  
+  const searchQuery = params.get("search");
+
   const dispatch = useDispatch();
   const searchMovies = () => {
     navigate(`/?search=${props.text}`);
   };
-  
+
   useEffect(() => {
     const options = {
       method: "GET",
-      url: "https://imdb8.p.rapidapi.com/auto-complete",
-      params: { q: searchQuery || props.text},
+      url: "https://imdb10.p.rapidapi.com/auto-complete",
+      params: { q: searchQuery || props.text },
       headers: {
         "x-rapidapi-host": "imdb8.p.rapidapi.com",
         "x-rapidapi-key": KEY,
       },
     };
-     axios
+    axios
       .request(options)
       .then(function (response) {
         dispatch(moviesInfo(response.data.d));
@@ -57,11 +58,13 @@ const SearchBar = (props ) => {
       .catch(function (error) {
         console.error(error);
       });
-  }, [searchQuery])
+  }, [searchQuery]);
 
   return (
     <div className={classes.header}>
-      <MovieIcon />
+      <Link to="/" style={{ color: "black" }}>
+        <MovieIcon />
+      </Link>
       <Button
         className={classes.button}
         variant="contained"
@@ -71,7 +74,7 @@ const SearchBar = (props ) => {
       </Button>
       <TextField
         className={classes.textField}
-        onChange={(e) => dispatch(searchMovie((e.target.value)))}
+        onChange={(e) => dispatch(searchMovie(e.target.value))}
       ></TextField>
     </div>
   );

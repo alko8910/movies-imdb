@@ -9,12 +9,12 @@ const MovieCover = ({ title, item }) => {
 
   return (
     <>
-      <Card style={{ height: "250px", width: "150px" }}>
+      <Card style={{ height: "250px", maxWidth: "250px", margin:'3px' }}>
         <Link to={`/movie/${item.id}`}>
           {item.i ? (
               <img
               src={item.i.imageUrl }
-              style={{ height: "150px", width: "150px" }}
+              style={{height: "150px", maxWidth: "150px" }}
               alt="Movie Cover Image"
             /> ) : (
               <img
