@@ -12,6 +12,12 @@ const useStyles = makeStyles({
       width: "100%",
       height: "100%",
     },
+    cover: { 
+      "@media (min-width: 780px)": {
+      height: '250px',
+      width: '180px'
+    }
+  }
   },
 });
 
@@ -31,12 +37,12 @@ const MovieList = () => {
       alignItems="center"
     >
       {movies?.map((item) => (
-        <Grid item xs={12} sm={4} key={item.id} style={{paddingTop: '10px'}}>
+        <Grid item className={classes.cover} xs={12} sm={4}  key={item.id} style={{paddingTop: '10px', width:'200%'}}>
           <MovieCover
             key={item.id}
             item={item}
             title={item.l}
-            style={{ width: "200px" }}
+             style={{ width: "100%" }} 
           />
         </Grid>
       ))}

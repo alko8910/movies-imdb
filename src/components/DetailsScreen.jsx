@@ -33,9 +33,9 @@ const DetailsScreen = () => {
               md={1}
               style={{ paddingTop: "10px" }}
               key={item.id}
-              spacing={1}
+              
             >
-              <MovieCover key={item.id} item={item} title={item.l} style={{padding:'5px'}}/>
+              <MovieCover key={item.id} item={item} title={item.l} style={{padding:'5px', maxWidth: '100%'}}/>
             </Grid>
           ))}
         </Grid>

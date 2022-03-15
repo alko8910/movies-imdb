@@ -43,7 +43,7 @@ const SearchBar = (props) => {
   useEffect(() => {
     const options = {
       method: "GET",
-      url: "https://imdb10.p.rapidapi.com/auto-complete",
+      url: "https://imdb8.p.rapidapi.com/auto-complete",
       params: { q: searchQuery || props.text },
       headers: {
         "x-rapidapi-host": "imdb8.p.rapidapi.com",
